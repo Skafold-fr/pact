@@ -1,0 +1,28 @@
+{
+  "name": "pact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "start:consumer": "tsx --env-file=.env --watch ./consumer/index.ts",
+    "start:provider": "tsx --env-file=.env --watch ./provider/index.ts",
+    "test:consumer": "vitest run consumer/__test__/contract/consumer.pact.test.ts",
+    "test:provider": "vitest run provider/__test__/contract/provider.pact.test.ts",
+    "pact:publish": "pact-broker publish ./consumer/pacts --consumer-app-version=0.0.1 --branch=main --broker-base-url=http://localhost:9292 --broker-username=pact --broker-password=pact",
+    "pact:can-i-deploy": "pact-broker can-i-deploy --broker-base-url=http://localhost:9292 --pacticipant=ConsumerService --broker-username=pact --broker-password=pact --latest"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^16.1.0",
+    "@pact-foundation/pact-cli": "^16.1.5",
+    "@types/node": "^25.2.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.5.3",
+    "vitest": "^4.0.18"
+  },
+  "private": true
+}

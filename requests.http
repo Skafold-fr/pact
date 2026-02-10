@@ -1,0 +1,5 @@
+### PROVIDER
+GET http://localhost:3001
+
+### CONSUMER
+GET http://localhost:3002
